@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 //import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.plugins.MockMaker;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +15,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.*;
 import org.mockito.plugins.MockMaker;
 
-
+@ExtendWith(MockitoExtension.class)
 public class IPokedexTest {
 
     @Mock
