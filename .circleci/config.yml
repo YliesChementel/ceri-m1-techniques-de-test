@@ -9,6 +9,9 @@ jobs:
       - run:
           name: Build with Maven
           command: mvn clean install
+      - run:
+          name: Test
+          command: mvn test
 
 workflows:
   version: 2
