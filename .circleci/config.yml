@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@4.0.1
-
 jobs:
   build:
     docker:
@@ -13,20 +10,19 @@ jobs:
           name: Build with Maven
           command: mvn clean install
       - run:
-          name: Run Tests
+          name: Test
           command: mvn test
-      - run:
-          name: Generate JaCoCo Report
-          command: mvn jacoco:report
 
   upload-to-codecov:
     docker:
       - image: circleci/openjdk:11
     steps:
-      - checkout
-      - codecov/upload:
-          file: target/site/jacoco/jacoco.xml
-          token: 3a664fc0-9300-4340-986f-fa33971785a5
+      - run:
+          name: Upload coverage to Codecov
+          command: ./"codecov" create-commit -t $CODECOV_TOKEN
+
+orbs:
+  codecov: codecov/codecov@4.0.1
 
 workflows:
   version: 2
@@ -37,8 +33,6 @@ workflows:
             branches:
               only:
                 - master
-  upload:
-    jobs:
       - upload-to-codecov:
           requires:
             - build
