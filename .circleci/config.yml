@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:11
+      - image: circleci/openjdk:8
     steps:
       - checkout
       - run:
@@ -13,18 +13,14 @@ jobs:
           name: Test
           command: mvn test
 
-  upload-to-codecov:
-    docker:
-      - image: circleci/openjdk:11
-    steps:
-      - codecov/upload:
-          token: $CODECOV_TOKEN
-
 orbs:
   codecov: codecov/codecov@4.0.1
 
 workflows:
   version: 2
+  upload-to-codecov:
+    jobs:
+      - codecov/upload
   build:
     jobs:
       - build:
@@ -32,6 +28,3 @@ workflows:
             branches:
               only:
                 - master
-      - upload-to-codecov:
-          requires:
-            - build
