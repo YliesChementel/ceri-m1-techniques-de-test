@@ -16,8 +16,14 @@ jobs:
           name: Collect coverage
           command: mvn test -Dmaven.test.failure.ignore=true -Dmaven.coverage.skip=false
       - run:
+          name: Add test reports to Git
+          command: |
+            git add target/surefire-reports
+            git commit -m "Add test reports" || echo "No changes to commit"
+      - run:
           name: Upload coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+
 
 orbs:
   codecov: codecov/codecov@4.0.1
