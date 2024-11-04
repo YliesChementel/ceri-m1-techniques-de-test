@@ -18,7 +18,8 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-
+      - store_test_results
+        path : test-results
 
 orbs:
   codecov: codecov/codecov@4.0.1
