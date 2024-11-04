@@ -12,15 +12,18 @@ jobs:
       - run:
           name: Test
           command: mvn test
+      - run:
+          name: Collect coverage
+          command: mvn test -Dmaven.test.failure.ignore=true -Dmaven.coverage.skip=false
+      - run:
+          name: Upload coverage to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
 orbs:
   codecov: codecov/codecov@4.0.1
 
 workflows:
   version: 2
-  upload-to-codecov:
-    jobs:
-      - codecov/upload
   build:
     jobs:
       - build:
