@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@4.0.1
-
 jobs:
   build:
     docker:
@@ -15,10 +12,6 @@ jobs:
       - run:
           name: Test
           command: mvn test
-      - run:
-          name: Generate JaCoCo report
-          command: mvn jacoco:report
-      - codecov/upload
 
 workflows:
   version: 2
