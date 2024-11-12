@@ -14,10 +14,11 @@ import static org.mockito.Mockito.when;
 public class PokedexTest {
 
     private Pokedex pokedex;
+    private PokemonFactory pokemonFactory;
 
     @BeforeEach
     public void setup() {
-        PokemonFactory pokemonFactory = new PokemonFactory();
+        pokemonFactory = new PokemonFactory();
         IPokemonMetadataProvider metadataProvider = null;
         pokedex = new Pokedex(metadataProvider,pokemonFactory);
     }
@@ -81,6 +82,34 @@ public class PokedexTest {
         assertEquals("Bulbizarre", pokemons.get(0).getName(), "Le premier Pokémon devrait être Bulbizarre");
         assertEquals("Florizarre", pokemons.get(1).getName(), "Le deuxième Pokémon devrait être Dracaufeu");
         assertEquals("Herbizarre", pokemons.get(2).getName(), "Le troisième Pokémon devrait être Salamèche");
+    }
+
+    @Test
+    void shouldReturnPokemonCreated(){
+        Pokemon expectedPokemon = new Pokemon(1, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+
+        Pokemon createdPokemon = pokemonFactory.createPokemon(1, 613, 64, 4000, 4);
+
+        assertEquals(expectedPokemon.getIndex(), createdPokemon.getIndex());
+        assertEquals(expectedPokemon.getName(), createdPokemon.getName());
+        assertEquals(expectedPokemon.getCp(), createdPokemon.getCp());
+        assertEquals(expectedPokemon.getHp(), createdPokemon.getHp());
+        assertEquals(expectedPokemon.getDust(), createdPokemon.getDust());
+        assertEquals(expectedPokemon.getCandy(), createdPokemon.getCandy());
+    }
+
+    @Test
+    void shouldReturnPokemonMetadata() throws PokedexException {
+        Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        pokedex.addPokemon(pokemon);
+
+        PokemonMetadata pokemonMetadata = new PokemonMetadata(0,"Bulbizarre",126,126,90);
+
+        assertEquals(pokedex.getPokemonMetadata(0).getIndex(), pokemonMetadata.getIndex());
+        assertEquals(pokedex.getPokemonMetadata(0).getName(), pokemonMetadata.getName());
+        assertEquals(pokedex.getPokemonMetadata(0).getAttack(), pokemonMetadata.getAttack());
+        assertEquals(pokedex.getPokemonMetadata(0).getDefense(), pokemonMetadata.getDefense());
+        assertEquals(pokedex.getPokemonMetadata(0).getStamina(), pokemonMetadata.getStamina());
     }
 
 }
