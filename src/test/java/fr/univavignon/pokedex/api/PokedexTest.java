@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class PokedexTest {
@@ -76,8 +77,7 @@ public class PokedexTest {
 
         Comparator<Pokemon> nameComparator = PokemonComparators.NAME;
 
-        List<Pokemon> pokemons = new ArrayList<>(pokedex.getPokemons());
-        pokemons.sort(nameComparator);
+        List<Pokemon> pokemons = pokedex.getPokemons(nameComparator);
 
         assertEquals("Bulbizarre", pokemons.get(0).getName(), "Le premier Pokémon devrait être Bulbizarre");
         assertEquals("Florizarre", pokemons.get(1).getName(), "Le deuxième Pokémon devrait être Dracaufeu");
@@ -99,6 +99,18 @@ public class PokedexTest {
     }
 
     @Test
+    void shouldReturnPokemonCreatedWithMock() {//Pour les stats aléatoires
+        Pokemon expectedPokemon = new Pokemon(1, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        PokemonFactory mockedFactory = mock(PokemonFactory.class);
+        when(mockedFactory.createPokemon(1, 613, 64, 4000, 4)).thenReturn(expectedPokemon);
+
+        Pokedex pokedexWithMock = new Pokedex(null, mockedFactory);
+        Pokemon createdPokemon = pokedexWithMock.createPokemon(1, 613, 64, 4000, 4);
+
+        assertEquals(expectedPokemon, createdPokemon);
+    }
+
+    @Test
     void shouldReturnPokemonMetadata() throws PokedexException {
         Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         pokedex.addPokemon(pokemon);
@@ -110,6 +122,13 @@ public class PokedexTest {
         assertEquals(pokedex.getPokemonMetadata(0).getAttack(), pokemonMetadata.getAttack());
         assertEquals(pokedex.getPokemonMetadata(0).getDefense(), pokemonMetadata.getDefense());
         assertEquals(pokedex.getPokemonMetadata(0).getStamina(), pokemonMetadata.getStamina());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenPokemonNotFound() {
+        assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemonMetadata(152);
+        });
     }
 
 }
