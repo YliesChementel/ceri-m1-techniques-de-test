@@ -126,9 +126,11 @@ public class PokedexTest {
 
     @Test
     void shouldThrowExceptionWhenPokemonNotFound() {
+        Pokemon pokemon1 = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        pokedex.addPokemon(pokemon1);
+
         assertThrows(PokedexException.class, () -> {
             pokedex.getPokemonMetadata(152);
         });
     }
-
 }
