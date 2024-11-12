@@ -7,5 +7,17 @@ import static org.mockito.Mockito.when;
 
 public class PokedexFactoryTest {
 
+    @Test
+    void shouldCreatePokedex() {
+        IPokemonMetadataProvider metadataProvider = null;
+        IPokemonFactory pokemonFactory = new PokemonFactory();
+
+        PokedexFactory pokedexFactory = new PokedexFactory();
+
+        IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
+
+        assertNotNull(pokedex);
+        assertInstanceOf(Pokedex.class, pokedex);
+    }
 
 }
