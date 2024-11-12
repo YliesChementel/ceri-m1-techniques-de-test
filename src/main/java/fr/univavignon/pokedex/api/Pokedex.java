@@ -46,5 +46,19 @@ public class Pokedex implements IPokedex{
         return Collections.unmodifiableList(pokemons);
     }
 
+    @Override
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+    }
 
+    @Override
+    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+        int i = 0;
+        while (listPokemon.size() > i) {
+            if(listPokemon.get(i).getIndex()==index){
+                return new PokemonMetadata(index,listPokemon.get(i).getName(),listPokemon.get(i).getAttack(),listPokemon.get(i).getDefense(),listPokemon.get(i).getStamina());
+            }
+        }
+        throw new PokedexException("Aucun Pokémon avec cet index dans le Pokedex");
+    }
 }
