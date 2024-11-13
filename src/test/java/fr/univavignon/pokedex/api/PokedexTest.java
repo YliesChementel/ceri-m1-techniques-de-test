@@ -46,6 +46,18 @@ public class PokedexTest {
     }
 
     @Test
+    void shouldThrowPokedexExceptionForInvalidId() throws PokedexException {
+        Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90,613,64,4000,4,56);
+        pokedex.addPokemon(pokemon);
+
+        PokedexException exception = assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(-1);
+        });
+
+        assertEquals("Invalid ID", exception.getMessage(), "Doit lever une PokedexException pour un ID invalide");
+    }
+
+    @Test
     void shouldReturnListContainingAddedPokemon() throws PokedexException {
         Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         pokedex.addPokemon(pokemon);

@@ -16,7 +16,7 @@ public class PokemonFactoryTest {
     }
 
     @Test
-    void shouldCreatePokemonWithValidIndex() {
+    void shouldCreatePokemonInstance() {
         int index = 1;
         int cp = 613;
         int hp = 64;
