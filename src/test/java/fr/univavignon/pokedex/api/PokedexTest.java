@@ -117,4 +117,30 @@ public class PokedexTest {
             pokedex.getPokemonMetadata(152);
         });
     }
+
+    @Test
+    void shouldCreatePokemon() {
+        Pokemon pokemon = pokedex.createPokemon(1,613,64,4000,4);
+        assertEquals(pokemon.getIndex(),1);
+        assertEquals(pokemon.getCp(),613);
+        assertEquals(pokemon.getHp(),64);
+        assertEquals(pokemon.getDust(),4000);
+        assertEquals(pokemon.getCandy(),4);
+    }
+
+    @Test
+    void shouldGetPokemonMetadata() {
+        try {
+            PokemonMetadata pokemonMetadata = pokemonMetadataProvider.getPokemonMetadata(1);
+            assertEquals(pokemonMetadata.getIndex(),1);
+            assertEquals(pokemonMetadata.getName(),"Bulbizarre");
+            assertEquals(pokemonMetadata.getAttack(),49);
+            assertEquals(pokemonMetadata.getDefense(),49);
+            assertEquals(pokemonMetadata.getStamina(),45);
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }
