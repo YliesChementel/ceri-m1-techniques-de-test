@@ -53,13 +53,6 @@ public class Pokedex implements IPokedex{
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        int i = 0;
-        while (listPokemon.size() > i) {
-            if(listPokemon.get(i).getIndex()==index){
-                return new PokemonMetadata(index,listPokemon.get(i).getName(),listPokemon.get(i).getAttack(),listPokemon.get(i).getDefense(),listPokemon.get(i).getStamina());
-            }
-            i++;
-        }
-        throw new PokedexException("Aucun Pokémon avec cet index dans le Pokedex");
+        return metadataProvider.getPokemonMetadata(index);
     }
 }
