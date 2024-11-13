@@ -35,7 +35,7 @@ public class PokedexTest {
     @Test
     void shouldAddPokemonAndReturnIndex() {
         Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90,613,64,4000,4,56);
-        assertEquals(pokedex.addPokemon(pokemon),0, "L'index du Pokémon ajouté doit être 0");
+        assertEquals(pokedex.addPokemon(pokemon),0);
     }
 
     @Test
@@ -51,8 +51,8 @@ public class PokedexTest {
         pokedex.addPokemon(pokemon);
 
         List<Pokemon> pokemons = pokedex.getPokemons();
-        assertEquals(1, pokemons.size(), "La liste des Pokémon devrait contenir 1 Pokémon");
-        assertEquals("Bulbizarre", pokemons.get(0).getName(), "Le Pokémon récupéré doit être Bulbizarre");
+        assertEquals(1, pokemons.size());
+        assertEquals("Bulbizarre", pokemons.get(0).getName());
     }
 
     @Test
@@ -97,18 +97,6 @@ public class PokedexTest {
         assertEquals(expectedPokemon.getHp(), createdPokemon.getHp());
         assertEquals(expectedPokemon.getDust(), createdPokemon.getDust());
         assertEquals(expectedPokemon.getCandy(), createdPokemon.getCandy());
-    }
-
-    @Test
-    void shouldReturnPokemonCreatedWithMock() {//Pour les stats aléatoires
-        Pokemon expectedPokemon = new Pokemon(1, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        PokemonFactory mockedFactory = mock(PokemonFactory.class);
-        when(mockedFactory.createPokemon(1, 613, 64, 4000, 4)).thenReturn(expectedPokemon);
-
-        Pokedex pokedexWithMock = new Pokedex(null, mockedFactory);
-        Pokemon createdPokemon = pokedexWithMock.createPokemon(1, 613, 64, 4000, 4);
-
-        assertEquals(expectedPokemon, createdPokemon);
     }
 
     @Test

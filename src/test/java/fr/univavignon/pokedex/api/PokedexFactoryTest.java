@@ -9,7 +9,7 @@ public class PokedexFactoryTest {
 
     @Test
     void shouldCreatePokedex() {
-        IPokemonMetadataProvider metadataProvider = null;
+        IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
 
         PokedexFactory pokedexFactory = new PokedexFactory();

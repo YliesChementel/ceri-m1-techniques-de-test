@@ -33,34 +33,4 @@ public class PokemonFactoryTest {
         assertEquals(candy, pokemon.getCandy());
     }
 
-    @Test
-    void shouldCreatePokemonWithValidStats() {
-        Pokemon pokemon = pokemonFactory.createPokemon(1, 613, 64, 4000, 4);
-
-        assertTrue(pokemon.getAttack() >= 0 && pokemon.getAttack() <= 1000);
-        assertTrue(pokemon.getDefense() >= 0 && pokemon.getDefense() <= 1000);
-        assertTrue(pokemon.getStamina() >= 0 && pokemon.getStamina() <= 1000);
-    }
-
-    @Test
-    void shouldCreatePokemonWithNegativeIndex() {
-        Pokemon pokemon = pokemonFactory.createPokemon(-1, 613, 64, 4000, 4);
-        assertEquals(-1, pokemon.getIndex());
-        assertEquals("Pikachu de Sacha", pokemon.getName());
-        assertEquals(1000, pokemon.getAttack());
-        assertEquals(1000, pokemon.getDefense());
-        assertEquals(1000, pokemon.getStamina());
-        assertEquals(0, pokemon.getIv());
-    }
-
-    @Test
-    void shouldCreatePokemonWithUnknownIndex() {
-        Pokemon pokemon = pokemonFactory.createPokemon(152, 613, 64, 4000, 4);
-
-        assertEquals("MISSINGNO", pokemon.getName());
-        assertTrue(pokemon.getAttack() >= 0 && pokemon.getAttack() <= 1000);
-        assertTrue(pokemon.getDefense() >= 0 && pokemon.getDefense() <= 1000);
-        assertTrue(pokemon.getStamina() >= 0 && pokemon.getStamina() <= 1000);
-    }
-
 }

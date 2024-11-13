@@ -16,7 +16,7 @@ public class PokemonTrainerTest {
     @BeforeEach
     public void setup() {
         PokemonFactory pokemonFactory = new PokemonFactory();
-        IPokemonMetadataProvider metadataProvider = null;
+        IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         pokedex = new Pokedex(metadataProvider,pokemonFactory);
         pokemonTrainer = new PokemonTrainer("Sacha",INSTINCT,pokedex);
     }

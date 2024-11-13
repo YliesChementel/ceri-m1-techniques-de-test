@@ -18,9 +18,9 @@ public class PokemonTrainerFactoryTest {
 
     @BeforeEach
     void setUp() {
-        pokemonTrainerFactory = new PokemonTrainerFactory(null,new PokemonFactory());
+        pokemonTrainerFactory = new PokemonTrainerFactory(new PokemonMetadataProvider(),new PokemonFactory());
         pokedexFactory = new PokedexFactory();
-        pokedex = new Pokedex(null,new PokemonFactory());
+        pokedex = new Pokedex(new PokemonMetadataProvider(),new PokemonFactory());
     }
 
     @Test
