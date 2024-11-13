@@ -18,6 +18,17 @@ public class PokemonFactory implements IPokemonFactory {
         } catch (PokedexException e) {
             throw new RuntimeException(e);
         }
+        Random randomAttack = new Random();
+        Random randomDefense = new Random();
+        Random randomStamina = new Random();
+
+
+        int ivAttack = randomAttack.nextInt(16);
+        int ivDefense = randomDefense.nextInt(16);
+        int ivStamina = randomStamina.nextInt(16);
+
+        double iv = (ivAttack + ivDefense + ivStamina) / 0.45;
+
         return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(), metadata.getStamina(), cp, hp, dust, candy, iv);
     }
 
