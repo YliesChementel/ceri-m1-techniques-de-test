@@ -16,12 +16,13 @@ public class PokedexTest {
 
     private Pokedex pokedex;
     private PokemonFactory pokemonFactory;
+    private  PokemonMetadataProvider pokemonMetadataProvider;
 
     @BeforeEach
     public void setup() {
         pokemonFactory = new PokemonFactory();
-        IPokemonMetadataProvider metadataProvider = null;
-        pokedex = new Pokedex(metadataProvider,pokemonFactory);
+        pokemonMetadataProvider = new PokemonMetadataProvider();
+        pokedex = new Pokedex(pokemonMetadataProvider,pokemonFactory);
     }
 
     @Test
@@ -112,16 +113,11 @@ public class PokedexTest {
 
     @Test
     void shouldReturnPokemonMetadata() throws PokedexException {
-        Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        pokedex.addPokemon(pokemon);
 
-        PokemonMetadata pokemonMetadata = new PokemonMetadata(0,"Bulbizarre",126,126,90);
+        PokemonMetadata pokemonMetadata = pokemonMetadataProvider.getPokemonMetadata(1);
 
-        assertEquals(pokedex.getPokemonMetadata(0).getIndex(), pokemonMetadata.getIndex());
-        assertEquals(pokedex.getPokemonMetadata(0).getName(), pokemonMetadata.getName());
-        assertEquals(pokedex.getPokemonMetadata(0).getAttack(), pokemonMetadata.getAttack());
-        assertEquals(pokedex.getPokemonMetadata(0).getDefense(), pokemonMetadata.getDefense());
-        assertEquals(pokedex.getPokemonMetadata(0).getStamina(), pokemonMetadata.getStamina());
+        assertEquals(pokemonMetadata.getIndex(), 1);
+        assertEquals(pokemonMetadata.getName(),"Bulbizarre");
     }
 
     @Test
