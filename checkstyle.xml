@@ -8,11 +8,10 @@
         <module name="AvoidStarImport"/>
         <module name="ConstantName"/>
         <module name="EmptyBlock"/>
-        <module name="CommentsIdentation"></module>
-        <module name="Indentation"></module>
-        <module name="NewlineAtENdOfFile"></module>
-        <module name="RegexpSingleline"></module>
+        <module name="CommentsIndentation"/>
     </module>
+    <module name="RegexpSingleline"/>
+    <module name="NewlineAtEndOfFile"/>
 </module>
 
 

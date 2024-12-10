@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
-    private static final Map<Integer, PokemonMetadata> index2metadata;
+    private static final Map<Integer, PokemonMetadata> INDEXTOMETADATA;
 
     static {
         Map<Integer, PokemonMetadata> aMap = new HashMap<>();
@@ -15,12 +15,12 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
         aMap.put(1, new PokemonMetadata(1, "Bulbizarre", 49, 49, 45));
         aMap.put(133, new PokemonMetadata(133, "Aquali", 60, 65, 85));
 
-        index2metadata = UnmodifiableMap.unmodifiableMap(aMap);
+        INDEXTOMETADATA = UnmodifiableMap.unmodifiableMap(aMap);
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        PokemonMetadata pokemonMetadata = index2metadata.get(index);
+        PokemonMetadata pokemonMetadata = INDEXTOMETADATA.get(index);
         if (pokemonMetadata == null) {
             throw new PokedexException("Index invalide");
         }
