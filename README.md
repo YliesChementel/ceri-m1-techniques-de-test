@@ -108,6 +108,37 @@ Classe représentant une équipe de Pokémon, souvent associée à un dresseur d
 Exception personnalisée pour gérer les erreurs liées au Pokedex.
 
 
+## TP
+
+### TP1
+
+### TP2
+
+### TP3
+
+### TP4
+
+### TP5
+
+### TP6
+
+#### Rapport de Conclusions sur le code RocketPokemonFactory
+
+Tout d'abord, à vue d'œil, il y a plusieurs problèmes avec le code fourni :
+
+- **La variable `index2name`** n'a pas de raison d'être, car ce n'est pas au rôle de `RocketPokemonFactory` de stocker les noms des pokémons, mais à `PokemonMetadataProvider`. En effet, grâce à l'index d'un pokémon, on peut obtenir son nom dans `PokemonMetadataProvider`, donc cette variable ne sert à rien.
+
+- **La méthode `generateRandomStat()`** est tout aussi inutile puisqu'elle n'a aucun sens. Dans cette méthode, la variable `total` est initialisée à 0, puis elle passe dans une boucle où elle sera incrémentée par une valeur entre 0 et 1. Cette itération se produit un million de fois, puis la variable sera divisée par 1000. Cette fonction aurait pu être remplacée par une seule ligne : `r = rn.nextInt(1001)` pour obtenir le même résultat.
+
+- **La méthode `createPokemon()`** ne fonctionne pas comme elle le devrait, car :
+    - Premièrement, les stats des pokémons ne devraient pas être aléatoires, car elles sont déjà stockées dans `PokemonMetadataProvider`.
+    - Et enfin, les IV ne sont pas calculés correctement et de manière aléatoire. Actuellement, ils ne sont pas censés être initialisés à 0 ou 1.
+
+Ensuite, concernant les tests :
+
+Les tests de `PokemonFactoryTest` ont été copiés dans la nouvelle classe `RocketPokemonFactoryTest`, puis ont été lancés pour être mis en échec.
+
+- **Le test `shouldCreatePokemonInstance()`** échoue, car la méthode `createPokemon` de `RocketPokemonFactory` prend le nom de ses pokémons directement dans sa propre variable `Map`, et non dans `PokemonMetadataProvider`. Ainsi, au lieu de récupérer "Bulbizarre", elle récupère "Bulbasaur". De plus, si un index inconnu est fourni à `createPokemon`, `RocketPokemonFactory` ne renverra pas une erreur, mais renverra `MISSINGNO` puisqu'il se trouve dans sa `Map`, alors que `PokemonMetadataProvider` renverrait une exception.
 
 
 
