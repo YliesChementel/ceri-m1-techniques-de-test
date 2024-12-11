@@ -54,27 +54,42 @@ public final class Pokemon extends PokemonMetadata {
           this.iv = iv;
      }
 
-     /** Combat Point getter getter. **/
+     /**
+     * Combat Point getter.
+     * @return the combat point (CP) of the object
+     **/
      public int getCp() {
           return cp;
      }
 
-     /** HP getter. **/
+     /**
+     * HP getter.
+     * @return the HP (hit points) of the object
+     **/
      public int getHp() {
           return hp;
      }
 
-     /** Dust getter. **/
+     /**
+     * Dust getter.
+     * @return the dust value of the object
+     **/
      public int getDust() {
           return dust;
      }
 
-     /** Candy getter. **/
+     /**
+     * Candy getter.
+     * @return the candy value of the object
+     **/
      public int getCandy() {
           return candy;
      }
 
-     /** IV getter. **/
+     /**
+     * IV getter.
+     * @return the IV (individual value) of the object
+     **/
      public double getIv() {
           return iv;
      }
