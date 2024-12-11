@@ -10,4 +10,5 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test/graph/badge.svg?token=9HBZX9SS95)](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test)
-![Checkstyle](https://img.shields.io/github/workflow/status/YliesChementel/ceri-m1-techniques-de-test/Checkstyle)
+
+![CircleCI](https://circleci.com/gh/YliesChementel/ceri-m1-techniques-de-test.svg?style=shield)

@@ -18,7 +18,12 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check -Dcheckstyle.outputFile=target/checkstyle-result.xml
+      - run:
+          name: Generate Javadoc
+          command: mvn javadoc:javadoc
 orbs:
   codecov: codecov/codecov@4.0.1
 
