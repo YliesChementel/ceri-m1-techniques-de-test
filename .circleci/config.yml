@@ -34,9 +34,12 @@ jobs:
             git config --global user.email "ylies.chementel@alumni.univ-avignon.fr"
             git config --global user.name "YliesChementel"
             git add .
-            git status
-            git commit -m "Update badges"
-            git push https://YliesChementel:${Javadoc}@github.com/YliesChementel/ceri-m1-techniques-de-test.git master
+            if [[ -n "$(git status --porcelain)" ]]; then
+              git commit -m "Update badges"
+              git push https://YliesChementel:${Javadoc}@github.com/YliesChementel/ceri-m1-techniques-de-test.git master
+            else
+              echo "No changes to commit. The branch is up to date."
+            fi
 
       - run:
           name: Generate Javadoc
