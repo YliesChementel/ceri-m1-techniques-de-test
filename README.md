@@ -11,7 +11,8 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test/graph/badge.svg?token=9HBZX9SS95)](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test)
 ![Checkstyle](badges/checkstyle-result.svg)
-![Javadoc](https://img.shields.io/badge/Javadoc-Link-green?url=https://ylieschementel.github.io/ceri-m1-techniques-de-test/)
+[![Javadoc](https://img.shields.io/badge/Javadoc-Link-green)](https://ylieschementel.github.io/ceri-m1-techniques-de-test/)
+
 ## Projet Pokedex
 
 Un projet qui permet de gérer et stocké des Pokémons, leurs statistiques et faire des opérations sur ceux-ci.
