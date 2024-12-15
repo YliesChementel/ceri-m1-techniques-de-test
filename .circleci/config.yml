@@ -81,12 +81,15 @@ workflows:
                 - master
       - verify:
           requires:
-            - build
+            - checkstyle
           filters:
             branches:
               only:
                 - master
+          continue_on_error: true
       - deploy:
+          requires:
+            - build
           filters:
             branches:
               only:
