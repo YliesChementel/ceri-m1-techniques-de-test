@@ -29,6 +29,14 @@ jobs:
           command: |
             ls badges
       - run:
+          name: Commit and push badges to master
+          command: |
+            git add .
+            git status
+            git commit -m "Update badges"
+            git push https://YliesChementel:${Javadoc}@github.com/YliesChementel/ceri-m1-techniques-de-test.git master
+
+      - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
       - run:
