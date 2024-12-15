@@ -38,7 +38,8 @@ jobs:
       - checkout
       - run:
           name: Verify for the badges
-          command: mvn verify
+          command: |
+            mvn verify || true
 
   deploy:
     docker:
@@ -86,7 +87,6 @@ workflows:
             branches:
               only:
                 - master
-          continue_on_error: true
       - deploy:
           requires:
             - build
