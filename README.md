@@ -11,6 +11,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/YliesChementel/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test/graph/badge.svg?token=9HBZX9SS95)](https://codecov.io/gh/YliesChementel/ceri-m1-techniques-de-test)
 ![Checkstyle](badges/checkstyle-result.svg)
+![Javadoc](https://img.shields.io/badge/Documentation%20API-Link-blue?url=https%3A%2F%2Fylieschementel.github.io%2Fceri-m1-techniques-de-test%2Ffr%2Funivavignon%2Fpokedex%2Fapi%2Fpackage-summary.html)
 
 ## Projet Pokedex
 
