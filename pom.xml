@@ -78,14 +78,12 @@
                 <version>1.0.0</version>
                 <executions>
                     <execution>
-                        <phase>post-site</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>badges</goal>
                         </goals>
                         <configuration>
-                            <!--suppress UnresolvedMavenProperty -->
-                            <skip>${badges.skip}</skip>
-                            <outputDir>target/site/badges</outputDir>
+                            <outputDir>badges</outputDir>
                             <inputFiles>
                                 <inputFile>target/checkstyle-result.xml</inputFile>
                             </inputFiles>

@@ -32,11 +32,11 @@ Dans mes implémentations, je suis resté simple : si ce n'est pas dans l'interf
 
 J'ai implémenté les classes suivantes :
 
-#### PokemonMetadataProvider
+### PokemonMetadataProvider
 
 Cette classe implémente l'interface `IPokemonMetadataProvider` qui ne possède qu'une seule méthode, `getPokemonMetadata`. J'ai donc implémenté cette méthode dans la classe. Cette classe étant un provider de `PokemonMetadata`, j'ai choisi de stocker des `PokemonMetadata` dans cette classe pour les récupérer si demandés. J'ai stocké ces métadonnées via la variable static `INDEXTOMETADATA`. Grâce à cette méthode de stockage, j'ai pu implémenter la méthode `getPokemonMetadata` pour récupérer les métadonnées d'un Pokémon en fonction de son index. La méthode aura seulement à chercher dans la variable Map statique pour récupérer les métadonnées d'un Pokémon donné, et si elle ne les trouve pas, elle renverra une erreur.
 
-#### PokemonFactory
+### PokemonFactory
 
 Cette classe implémente l'interface `IPokemonFactory` qui ne possède qu'une seule méthode, `createPokemon`. J'ai donc implémenté cette méthode dans la classe.
 
@@ -44,11 +44,11 @@ Dans la méthode `createPokemon`, j'utilise un `PokemonMetadataProvider` pour r�
 
 Enfin, j'utilise le tout pour créer une nouvelle instance de `Pokemon`, en initialisant ses attributs avec l'index, le nom, l'attaque, la défense, l'endurance, le CP, les HP, la quantité de dust, de bonbons et les IV calculés.
 
-#### PokedexFactory
+### PokedexFactory
 
 Cette classe implémente l'interface `IPokedexFactory` qui possède une seule méthode, `createPokedex`. J'ai donc implémenté cette méthode dans la classe. Sa méthode `createPokedex` renvoie tout simplement une nouvelle instance de `Pokedex` avec en paramètres les objets `IPokemonMetadataProvider` et `IPokemonFactory` qui lui sont donnés, et ce, uniquement s'ils ne sont pas null. Sinon, l'instance retournée est null.
 
-#### PokemonTrainerFactory
+### PokemonTrainerFactory
 
 Cette classe implémente l'interface `IPokemonTrainerFactory` qui possède une seule méthode, `createTrainer`, mais j'ai rajouté plusieurs éléments nécessaires au bon fonctionnement de la classe, tels que des variables de classe et un constructeur.
 
@@ -56,7 +56,7 @@ Dans la méthode `createTrainer`, je vérifie d'abord que les arguments ne sont 
 
 J'ai donc utilisé ce `pokedexFactory` pour créer un objet de type `Pokedex`, mais pour cela, il me faut des objets de type `PokemonMetadataProvider` et `PokemonFactory`. J'ai donc dû intégrer ces objets en tant que variables de classe et donc dans le constructeur, afin que cette méthode fonctionne et crée un objet de type `Pokedex` pour pouvoir ensuite créer une instance de `PokemonTrainer`.
 
-#### Pokedex
+### Pokedex
 
 Cette classe implémente l'interface `IPokedex` qui regroupe plusieurs méthodes permettant de gérer une collection de Pokémon, d'ajouter des Pokémon, de récupérer leurs métadonnées et d'accéder à différentes vues de la liste des Pokémon.
 
