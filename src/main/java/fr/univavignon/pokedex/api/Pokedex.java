@@ -12,7 +12,7 @@ import java.util.List;
 */
 public class Pokedex implements IPokedex {
 
-    /**
+     /**
     * Provides Pokémon metadata, such as types, abilities, and other related information.
     */
     private IPokemonMetadataProvider metadataProvider;
