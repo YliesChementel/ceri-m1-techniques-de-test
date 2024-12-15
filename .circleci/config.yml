@@ -31,6 +31,8 @@ jobs:
       - run:
           name: Commit and push badges to master
           command: |
+            git config --global user.email "ylies.chementel@alumni.univ-avignon.fr"
+            git config --global user.name "YliesChementel"
             git add .
             git status
             git commit -m "Update badges"
