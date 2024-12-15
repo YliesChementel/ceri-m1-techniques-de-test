@@ -25,6 +25,10 @@ jobs:
           name: Verify for the badges
           command: mvn verify
       - run:
+          name: Check if badges are generated
+          command: |
+            ls badges
+      - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
       - run:
